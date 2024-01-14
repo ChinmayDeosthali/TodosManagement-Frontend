@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { API_URL, AWS_JPA_API_URL, TODO_JPA_API_URL } from '../app.constants';
+import { API_URL, AWS_JPA_API_URL, DEV_JPA_API_URL, RAILWAY_JPA_API_URL } from '../app.constants';
 
 export const TOKEN = 'token'
 export const AUTHENTICATED_USER = 'authenticatedUser'
@@ -20,9 +20,9 @@ export class BasicAuthenticationService {
       Authorization: basicAuthHeaderString,
     });
 
-    console.log('in executeAuthenticationService, url = '+ TODO_JPA_API_URL+'/basicauth');
+    console.log('in executeAuthenticationService, url = '+ RAILWAY_JPA_API_URL+'/basicauth');
     return this.http
-      .get<AuthenticationBean>(`${TODO_JPA_API_URL}/basicauth`, { headers })
+      .get<AuthenticationBean>(`${RAILWAY_JPA_API_URL}/basicauth`, { headers })
       .pipe(
         map((data) => {
           sessionStorage.setItem(AUTHENTICATED_USER, username);
